@@ -1,27 +1,21 @@
 'use strict';
 
-var CLOUD_WIDTH = 420; //ширина облака
-var CLOUD_HEIGHT = 270; //высота облака
-var CLOUD_X = 150;  //координата начала по Х
-var CLOUD_Y = 15; //координата начала по У
-var GAP = 10; // отступ
-
+var CLOUD_WIDTH = 420;
+var CLOUD_HEIGHT = 270;
+var CLOUD_X = 150;
+var CLOUD_Y = 15;
+var GAP = 10;
 
 var BAR_GAP = 50;
 var TEXT_HEIGHT = 20;
 var titleGap = CLOUD_Y + TEXT_HEIGHT * 2 + GAP * 2;
 var BAR_WIDTH = 40;
 
-
-var barHeight = CLOUD_HEIGHT - titleGap - TEXT_HEIGHT*2 ;
-
-
-
+var barHeight = CLOUD_HEIGHT - titleGap - TEXT_HEIGHT * 2;
 
 var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
-
 };
 
 var getMaxElement = function (arr) {
@@ -37,20 +31,19 @@ var getMaxElement = function (arr) {
 };
 
 var getRandomInt = function (int) {
-  var randomInt= Math.floor(Math.random () * int) + 1;
+  var randomInt = Math.floor(Math.random () * int) + 1;
   return randomInt;
 }
+
 var paintingGap = function (arr, ctx, i) {
-  if (arr[i]=== 'Вы') {
+  if (arr[i] === 'Вы') {
     ctx.fillStyle = 'rgba(255, 0, 0, 1)';
   } else {
     ctx.fillStyle = 'hsl(255, ' + getRandomInt (100) + '%' + ', 50%)';
   }
-
 }
 
-
-window.renderStatistics = function(ctx, players, times) {
+window.renderStatistics = function (ctx, players, times) {
   renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.3)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
 
@@ -66,10 +59,10 @@ window.renderStatistics = function(ctx, players, times) {
 
   for (var i = 0; i < players.length; i++) {
     ctx.fillStyle = '#000'
-    ctx.fillText(players[i], CLOUD_X + BAR_WIDTH + (BAR_GAP*2 * i), CLOUD_HEIGHT - GAP);
-    ctx.fillText(Math.floor(times[i]), CLOUD_X + BAR_WIDTH + (BAR_GAP*2 * i), CLOUD_HEIGHT - (barHeight * times[i]) / maxTime - TEXT_HEIGHT *2);
+    ctx.fillText(players[i], CLOUD_X + BAR_WIDTH + (BAR_GAP * 2 * i), CLOUD_HEIGHT - GAP);
+    ctx.fillText(Math.floor(times[i]), CLOUD_X + BAR_WIDTH + (BAR_GAP * 2 * i), CLOUD_HEIGHT - (barHeight * times[i]) / maxTime - TEXT_HEIGHT * 2);
     paintingGap (players, ctx, i);
-    ctx.fillRect(CLOUD_X + BAR_WIDTH + (BAR_GAP*2 * i), CLOUD_HEIGHT - (barHeight * times[i]) / maxTime - TEXT_HEIGHT, BAR_WIDTH, (barHeight * times[i]) / maxTime);
+    ctx.fillRect(CLOUD_X + BAR_WIDTH + (BAR_GAP * 2 * i), CLOUD_HEIGHT - (barHeight * times[i]) / maxTime - TEXT_HEIGHT, BAR_WIDTH, (barHeight * times[i]) / maxTime);
 
   }
 
