@@ -31,7 +31,7 @@ var getMaxElement = function (arr) {
 };
 
 var getRandomInt = function (int) {
-  var randomInt = Math.floor (Math.random () * int) + 1;
+  var randomInt = Math.floor(Math.random() * int) + 1;
   return randomInt;
 };
 
@@ -39,7 +39,7 @@ var paintingGap = function (arr, ctx, i) {
   if (arr[i] === 'Вы') {
     ctx.fillStyle = 'rgba(255, 0, 0, 1)';
   } else {
-    ctx.fillStyle = 'hsl(255, ' + getRandomInt (100) + '%' + ', 50%)';
+    ctx.fillStyle = 'hsl(255, ' + getRandomInt(100) + '%' + ', 50%)';
   }
 };
 
@@ -59,8 +59,8 @@ window.renderStatistics = function (ctx, players, times) {
   for (var i = 0; i < players.length; i++) {
     ctx.fillStyle = '#000';
     ctx.fillText(players[i], CLOUD_X + BAR_WIDTH + (BAR_GAP * 2 * i), CLOUD_HEIGHT - GAP);
-    ctx.fillText(Math.floor (times[i]), CLOUD_X + BAR_WIDTH + (BAR_GAP * 2 * i), CLOUD_HEIGHT - (barHeight * times[i]) / maxTime - TEXT_HEIGHT * 2);
-    paintingGap (players, ctx, i);
+    ctx.fillText(Math.floor(times[i]), CLOUD_X + BAR_WIDTH + (BAR_GAP * 2 * i), CLOUD_HEIGHT - (barHeight * times[i]) / maxTime - TEXT_HEIGHT * 2);
+    paintingGap(players, ctx, i);
     ctx.fillRect(CLOUD_X + BAR_WIDTH + (BAR_GAP * 2 * i), CLOUD_HEIGHT - (barHeight * times[i]) / maxTime - TEXT_HEIGHT, BAR_WIDTH, (barHeight * times[i]) / maxTime);
 
   }
