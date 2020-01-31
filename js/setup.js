@@ -43,10 +43,13 @@ var renderWizard = function (wizard) {
   return wizardElement;
 };
 // 7 Заполнение блока DOM-элементами на основе массива JS-объектов и все это кладем в фрагмент
-var fragment = document.createDocumentFragment();
-for (var j = 0; j < wizards.length; j++) {
-  fragment.appendChild(renderWizard(wizards[j]));
-}
-similarListElement.appendChild(fragment);
+var addWizards = function () {
+  var fragment = document.createDocumentFragment();
+  for (var j = 0; j < wizards.length; j++) {
+    fragment.appendChild(renderWizard(wizards[j]));
+  }
+  similarListElement.appendChild(fragment);
+};
+addWizards();
 // 8 Показываем блок с похожими персонажами
 document.querySelector('.setup-similar').classList.remove('hidden');
