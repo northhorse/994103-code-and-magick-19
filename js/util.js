@@ -18,5 +18,6 @@
 })();
 
 
-var ESC_KEY = 'Escape';
-var ENTER_KEY = 'Enter';
+
+ESC_KEY = 'Escape';
+  ENTER_KEY = 'Enter';
